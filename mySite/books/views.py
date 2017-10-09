@@ -14,3 +14,7 @@ def index(request):
 
 def detail(request, book_id):
     return HttpResponse("<h2> Details of book ID " + str(book_id) + "</h2>")
+
+
+def personal(request):
+    return HttpResponse("<h1> This is my personal trial page </h1>")
