@@ -9,7 +9,11 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("<h1>This is the books homepage</h1>")
+    return HttpResponse("<h1>This is the books homepage</h1> <a href = '/books/about'>About</a>")
+
+
+def about(request):
+    return HttpResponse("<h1> This is the 'about' page</h1> <a href = '/books/'>Home</a>")
 
 
 def detail(request, book_id):
