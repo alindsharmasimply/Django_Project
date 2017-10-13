@@ -17,7 +17,8 @@ def index(request):
 
 
 def about(request):
-    return HttpResponse("<h1> This is the 'about' page</h1> <a href = '/books/'>Home</a>")
+    context = RequestContext(request)
+    return render_to_response('books/about.html', {}, context)
 
 
 def detail(request, book_id):
