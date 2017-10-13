@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
 	<title>Books</title>
@@ -7,5 +8,6 @@
 	<h1>Books say....</h1>
 	hello world! <strong>{{ boldmessage }}</strong><br />
 	<a href="/books/about/">About</a><br />
+	<img src="{% static "books.jpg" %}" alt = "Picture of books logo"/>
 </body>
 </html>
