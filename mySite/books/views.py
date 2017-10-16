@@ -6,7 +6,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 
 # Create your views here.
-
+from .models import Book
 from django.http import HttpResponse
 
 
@@ -27,3 +27,12 @@ def detail(request, book_id):
 
 def personal(request):
     return HttpResponse("<h1> This is my personal trial page </h1>")
+
+
+def database_access(request):
+    all_books = Book.objects.all()
+    html = ''
+    for book in all_books:
+        url = '/books/' + str(book.id) + '/'
+        html += '<a href = "' + url + '">' + str(book.name) + '</a></br>'
+    return HttpResponse(html)

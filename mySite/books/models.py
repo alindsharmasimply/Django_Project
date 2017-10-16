@@ -14,20 +14,4 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     price = models.CharField(max_length=100)
     category = models.CharField(max_length=100)
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-
-    def __unicode__(self):
-        return self.name
-
-
-class Page(models.Model):
-    category = models.ForeignKey(Category)
-    title = models.CharField(max_length=100)
-    url = models.URLField()
-    views = models.IntegerField(default=0)
-
-    def __unicode__(self):
-        return self.title
+    likability = models.CharField(max_length=100)
