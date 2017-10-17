@@ -6,6 +6,7 @@ from django.template import loader
 # Create your views here.
 from .models import Book
 from django.http import HttpResponse
+from django.http import Http404
 
 
 def index(request):
@@ -22,7 +23,12 @@ def about(request):
 
 
 def detail(request, book_id):
-    return HttpResponse("<h2> Details of book ID " + str(book_id) + "</h2>")
+    try:
+        book = Book.objects.get(id=book_id)
+
+    except Book.DoesNotExist:
+        raise Http404("OOoooPS !!! This book is not available")
+    return render(request, 'books/detail.html', {'book': book})
 
 
 def personal(request):
