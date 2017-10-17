@@ -2,23 +2,24 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.template import RequestContext
-from django.shortcuts import render_to_response
-
+from django.template import loader
 # Create your views here.
 from .models import Book
 from django.http import HttpResponse
 
 
 def index(request):
-    context = RequestContext(request)
-    context_dict = {'boldmessage': "I am a bold font from the context"}
-    return render_to_response('books/index.html', context_dict, context)
+    template = loader.get_template('books/index.html')
+    all_books = Book.objects.all()
+    context = {
+        'all_books': all_books
+    }
+    return HttpResponse(template.render(context, request))
 
 
 def about(request):
-    context = RequestContext(request)
-    return render_to_response('books/about.html', {}, context)
+    template = loader.get_template('books/about.html')
+    return HttpResponse(template.render(request))
 
 
 def detail(request, book_id):

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 {% load static %}
 <html>
 <head>
@@ -11,3 +11,9 @@
 	<img src="{% static "books.jpg" %}" alt = "Picture of books logo"/>
 </body>
 </html>
+-->
+<ul>
+	{% for book in all_books %}
+	<li><a href="/books/{{book.id}}">{{book.name}}</a></li>
+	{% endfor %}
+</ul>
