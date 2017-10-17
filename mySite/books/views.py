@@ -9,17 +9,16 @@ from django.http import HttpResponse
 
 
 def index(request):
-    template = loader.get_template('books/index.html')
     all_books = Book.objects.all()
     context = {
         'all_books': all_books
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'books/index.html', context)
 
 
 def about(request):
     template = loader.get_template('books/about.html')
-    return HttpResponse(template.render(request))
+    return HttpResponse(template.render({}, request))
 
 
 def detail(request, book_id):
